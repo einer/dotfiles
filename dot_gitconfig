@@ -1,0 +1,5 @@
+[pull]
+	rebase = false
+[user]
+	name = Otmar Hilliges
+	email = otmarh@ethz.ch
