@@ -1,0 +1,11 @@
+{{- $github_user := promptStringOnce . "github_user" "Github user name" -}}
+
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $name := promptStringOnce . "name" "Your name"  -}}
+{{- $hostname := promptStringOnce . "hostname" "Hostname" -}}
+
+[data]
+    email = {{ $email | quote }}
+    name = {{ $name | quote }}
+    hostname = {{ $hostname | quote }}
+    github_user = {{ $github_user | quote }}
