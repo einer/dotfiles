@@ -1,0 +1,23 @@
+{{ if ne .chezmoi.os "darwin" }}
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+{{ end }}
+
+
+Host gitlab.inf.ethz.ch 
+  HostName gitlab.inf.ethz.ch
+  User otmarh
+  IdentityFile ~/.ssh/gitlab_inf_ethz_ch_ed25519
+Host drazira
+  HostName drazira.ch
+  Port 2222
+  User otmarh
+  IdentityFile ~/.ssh/fishtank-key-ecdsa
+Host eth-web
+  HostName web-login.inf.ethz.ch
+  Port 22
+  user webhilli
+  IdentityFile ~/.ssh/eth_webserver_ecdsa
+Host github.com
+  IdentityFile ~/.ssh/id_ed25519_github
