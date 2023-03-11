@@ -2,21 +2,21 @@
 
 set -e
 
-info_echo "Installing or updating chezmoi ..."
+echo "Installing or updating chezmoi ..."
 brew bundle --file=- <<EOF
     brew 'chezmoi'
 EOF
 if [ ! -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
-  info_echo "Applying dotfiles with chezmoi ..."
+  echo "Applying dotfiles with chezmoi ..."
   chezmoi init --apply --verbose https://github.com/einer/dotfiles.git
   chmod 0600 "$HOME/.config/chezmoi/chezmoi.toml"
 fi
 
 if [ -f "$HOME/Brewfile" ]; then
-  fancy_echo "Installing tools and apps from Brewfile ..."
+  echo "Installing tools and apps from Brewfile ..."
   if brew bundle --file="$HOME/Brewfile"; then
-    fancy_echo "All items in Brewfile were installed successfully."
+    echo "All items in Brewfile were installed successfully."
   else
-    fancy_echo "Some items in Brewfile were not installed successfully."
+    echo "Some items in Brewfile were not installed successfully."
   fi
 fi
