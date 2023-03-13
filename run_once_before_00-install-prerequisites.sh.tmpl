@@ -42,8 +42,7 @@ exists()
   command -v "$1" >/dev/null 2>&1
 }
 
-{{- if eq .chezmoi.os "darwin" -}}
-
+{{ if eq .chezmoi.os "darwin" }}
 if ! exists brew; then
   log_blue 'brew is not installed; attempting to install
   if ! exists curl; then
@@ -65,7 +64,7 @@ brew "git"
 brew "zsh"
 brew "jq"
 EOF
-{{ end -}}
+{{ end }}
 
 log_blue "Installing OH-MY-ZSH" 
 # unattended install of oh-my-zsh
