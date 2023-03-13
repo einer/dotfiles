@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# -e: exit on error
+# -u: exit on unset variables
+set -eu
+
+log_color() {
+  color_code="$1"
+  shift
+
+  printf "\033[${color_code}m%s\033[0m\n" "$*" >&2
+}
+
+log_red() {
+  log_color "0;31" "$@"
+}
+
+log_blue() {
+  log_color "0;34" "$@"
+}
+
+log_green() {
+  log_color '0;32' "$@"
+}
+
+log_task() {
+  log_blue "🔃" "$@"
+}
+
+log_error() {
+  log_red "❌" "$@"
+}
+
+error() {
+  log_error "$@"
+  exit 1
+}
+
+# check if program exists in PATH
+exists()
+{
+  command -v "$1" >/dev/null 2>&1
+}
+
+{{- if eq .chezmoi.os "darwin" -}}
+
+if ! exists brew; then
+  log_blue 'brew is not installed; attempting to install
+  if ! exists curl; then
+    error 'This script requires curl; please install curl first'
+  else
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  fi
+fi
+
+# at this point brew should be installed proceeding to install important pre-requisites; homebrew updates or skips if they already exist
+brew tap "homebrew/bundle"
+brew tap "homebrew/cask"
+brew tap "homebrew/core"
+brew tap homebrew/cask
+brew tap homebrew/cask-versions
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "git"
+brew "zsh"
+brew "jq"
+EOF
+{{ end -}}
+
+log_blue "Installing OH-MY-ZSH" 
+# unattended install of oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# need to figure out how to set the default shell without actually starting intercative zsh shell
+# chsh -s $(which zsh)
+
+log_green "Pre-requisites install complete\n"
+
+
