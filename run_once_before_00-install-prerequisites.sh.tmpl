@@ -44,7 +44,7 @@ exists()
 
 {{ if eq .chezmoi.os "darwin" }}
 if ! exists brew; then
-  log_blue 'brew is not installed; attempting to install
+  log_blue 'brew is not installed; attempting to install'
   if ! exists curl; then
     error 'This script requires curl; please install curl first'
   else
