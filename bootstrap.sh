@@ -8,7 +8,7 @@ brew bundle --file=- <<EOF
 EOF
 if [ ! -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
   echo "Applying dotfiles with chezmoi ..."
-  chezmoi init --apply --verbose git@github.com/einer/dotfiles.git
+  chezmoi init --apply --verbose https://github.com/einer/dotfiles.git
   chmod 0600 "$HOME/.config/chezmoi/chezmoi.toml"
 fi
 
