@@ -21,6 +21,8 @@ With a single command:
 sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply einer
 ```
 
+To avoid having to type bitwarden password multiple times, login and unlock vault first.
+
 ### Update
 
 On any machine, you can pull and apply the latest changes from your repo with:
