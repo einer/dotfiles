@@ -72,17 +72,12 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
-# WARNING this is going to break if ohmyzsh has been installed in a custom dir
 if [ -d "$HOME/.oh-my-zsh/custom" ]; then
   log_blue "Installing Powerlevel-10k"
-  git clone https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/themes/powerlevel10k
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 else
   log_red "check that $(HOME)/.oh-my-zsh/custom exists. Couldn't install powerlevel10k fonts"
 fi
-
-
-# need to figure out how to set the default shell without actually starting intercative zsh shell
-# chsh -s $(which zsh)
 
 log_green "Pre-requisites install complete\n"
 
