@@ -41,5 +41,7 @@ cz update -v
 
 ## Inspired by
 [Jerry's dotfiles](https://github.com/ngshiheng/dotfiles)
+
 [dNitza's dotfiles](https://github.com/dNitza/dotfiles)
+
 [Felipe Santos' dotfiles](https://github.com/felipecrs/dotfiles)
