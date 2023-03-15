@@ -1,4 +1,4 @@
-# Otmar's dotfiles
+# Einer's dotfiles
 
 My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
@@ -38,3 +38,8 @@ cz update -v
 ## Chezmoi reference
 
 [Chezmoi user guide](https://www.chezmoi.io/user-guide/command-overview/)
+
+## Inspired by
+[Jerry's dotfiles](https://github.com/ngshiheng/dotfiles)
+[dNitza's dotfiles](https://github.com/dNitza/dotfiles)
+[Felipe Santos' dotfiles](https://github.com/felipecrs/dotfiles)
